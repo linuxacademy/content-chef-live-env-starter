@@ -1,0 +1,8 @@
+{
+  "id": "david",
+  "packages": [
+    "vim",
+    "tmux",
+    "wget"
+  ]
+}

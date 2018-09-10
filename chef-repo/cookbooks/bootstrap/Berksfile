@@ -1,0 +1,8 @@
+# frozen_string_literal: true
+source 'https://supermarket.chef.io'
+
+metadata
+
+group :integration do
+  cookbook 'system_setup_test', path: './test/fixtures/cookbooks/system_setup_test'
+end
