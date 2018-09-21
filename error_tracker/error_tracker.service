@@ -1,16 +1,10 @@
 [Unit]
 Description=gunicorn daemon
-Requires=gunicorn.socket
 After=network.target
 
 [Service]
-PIDFile=/run/gunicorn/pid
-User=nginx
-Group=nginx
-RuntimeDirectory=gunicorn
 WorkingDirectory=/srv/error_tracker
-ExecStart=/usr/bin/gunicorn --pid /run/gunicorn/pid   \
-          --bind unix:/run/gunicorn/socket error_tracker.wsgi
+ExecStart=/usr/bin/gunicorn --bind unix:/run/gunicorn/socket wsgi:app
 ExecReload=/bin/kill -s HUP $MAINPID
 ExecStop=/bin/kill -s TERM $MAINPID
 PrivateTmp=true
