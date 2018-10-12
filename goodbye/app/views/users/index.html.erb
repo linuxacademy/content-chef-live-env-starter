@@ -1,0 +1,39 @@
+<h1>Chef Users</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Actions</th>
+    </tr>
+  </tfoot>
+  <tbody>
+    <% (@users || []).each do |user| %>
+      <tr id="user-<%= user['username'] %>">
+        <td><%= user['first_name'] %></td>
+        <td><%= user['last_name'] %></td>
+        <td><%= user['email'] %></td>
+        <td><%= user['username'] %></td>
+        <td>
+          <%= link_to "Delete User", user_path(user['username']), data: {
+            remote: true,
+            method: :delete,
+            confirm: "Are you sure you want to delete #{user['username']}?" },
+          class: "button is-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
